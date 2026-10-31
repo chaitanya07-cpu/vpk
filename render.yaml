@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: vivekananda-pashukhadya-kendra
+    runtime: node
+    plan: starter            # paid plan is REQUIRED for a disk (free plan erases data)
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: APP_PASSWORD
+        sync: false          # you type the password in Render's screen
+      - key: DATA_DIR
+        value: /var/data
+    disk:
+      name: vpk-data
+      mountPath: /var/data
+      sizeGB: 1

@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#047857"><meta name="mobile-web-app-capable" content="yes">
+<title>Vivekananda Pashukhadya Kendra</title>
+<style>
+:root{--g:#047857;--g2:#065f46;--bg:#f8fafc;--tx:#1e293b;--mu:#94a3b8;--bd:#e2e8f0}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--tx)}
+header{background:var(--g);color:#fff;padding:14px 20px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5;box-shadow:0 2px 6px #0003}
+header h1{margin:0;font-size:22px}header small{color:#a7f3d0}.pill{background:var(--g2);border:1px solid #059669;border-radius:12px;padding:8px 16px}.pill b{color:#fde047;font-size:20px}
+main{max-width:1200px;margin:auto;padding:20px;display:grid;gap:20px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.c,.p{background:#fff;border:1px solid #f1f5f9;border-radius:16px;padding:16px;box-shadow:0 1px 3px #0001}
+.c small{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--mu)}.c h3{margin:4px 0 0;font-size:26px}.c em{font-size:12px;font-style:normal;font-weight:500}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px}
+h2{margin:0 0 12px;font-size:18px}label{font-size:12px;font-weight:600;color:#64748b;display:block;margin:10px 0 3px}
+input,select,textarea{width:100%;padding:9px 11px;border:1px solid #cbd5e1;border-radius:10px;font:inherit;background:#fff}input:focus,textarea:focus{outline:2px solid #34d399}
+.row{display:grid;grid-template-columns:1.2fr .7fr .8fr .9fr;gap:8px;align-items:end}.row div:first-child{font-weight:600;padding-bottom:9px}.row div:first-child small{display:block;font-weight:400;color:var(--mu);font-size:11px}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+button{cursor:pointer;border:0;border-radius:10px;padding:10px 16px;font:inherit;font-weight:600;background:var(--g);color:#fff}button:hover{filter:brightness(.92)}
+.b{background:#2563eb}.w{width:100%;margin-top:14px}.s{background:#e2e8f0;color:#334155}.x{background:#fee2e2;color:#b91c1c;padding:4px 9px;font-size:12px}.wa{background:#16a34a}
+table{width:100%;border-collapse:collapse;font-size:14px}th{background:#f8fafc;text-align:left;font-size:11px;text-transform:uppercase;color:#64748b;padding:10px}td{padding:10px;border-top:1px solid #f1f5f9}.t{overflow-x:auto}.mu{color:var(--mu)}.r{text-align:right}
+#al{display:none;padding:12px 16px;border-radius:12px;font-weight:500}.er{background:#fee2e2;color:#991b1b;border:1px solid #fecaca}.go{background:#d1fae5;color:#065f46;border:1px solid #a7f3d0}
+#md{display:none;position:fixed;inset:0;background:#0007;z-index:20;align-items:center;justify-content:center;padding:16px}#md>div{background:#fff;border-radius:18px;max-width:640px;width:100%;max-height:90vh;overflow:auto;padding:20px}
+.pos{color:#047857;font-weight:700}.neg{color:#b91c1c;font-weight:700}
+.row{grid-template-columns:1fr .6fr .7fr .8fr .8fr 1.5fr}@media(max-width:760px){.row{grid-template-columns:1fr 1fr}.row div:first-child{grid-column:1/-1}}
+.g4{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}#si{margin-top:8px}.row{gap:10px;margin-top:6px}.row div:first-child{font-size:17px}.row input{padding:11px}.sum{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:18px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:14px;padding:14px 18px}.sum>div{flex:1;min-width:150px}.sum span{display:block;font-size:12px;font-weight:600;color:#64748b;text-transform:uppercase}.sum b{font-size:28px}.sum button{font-size:18px;padding:14px 30px}
+footer{text-align:center;padding:18px 12px 28px;color:#64748b;font-size:14px}footer b{color:var(--g)}
+@media(max-width:600px){main{padding:10px}header{padding:10px 12px}header h1{font-size:18px}.sum b{font-size:22px}.sum button{width:100%}.c h3{font-size:22px}.p{padding:12px}}
+</style></head><body>
+<header><div><h1>🌾 Vivekananda Pashukhadya Kendra</h1><small>Animal Food Supply &amp; Farmer Ledger</small></div>
+<div class="pill">Live Stock: <b id="hs">0</b> bags</div></header>
+<main>
+<div id="al"></div>
+<div class="cards" id="cards"></div>
+<div class="p"><h2>📦 Stock by Bag Type</h2><div class="t"><table><thead><tr><th>Bag type</th><th class="r">Bought</th><th class="r">Sold</th><th class="r">In stock</th><th class="r">Avg cost/bag</th><th class="r">Stock value</th><th class="r">Sales</th><th class="r">Profit</th></tr></thead><tbody id="tt"></tbody></table></div></div>
+<div class="p"><h2>🧾 Record Farmer Sale</h2>
+ <div class="g4"><div><label>Farmer name</label><input id="fn" list="fl" placeholder="Type name (new or existing)" autocomplete="off"><datalist id="fl"></datalist></div>
+ <div><label>Mobile number</label><input id="fp" inputmode="numeric" placeholder="10-digit number"></div>
+ <div><label>Village (optional)</label><input id="fv"></div>
+ <div><label>Date</label><input type="date" id="sd"></div></div>
+ <div id="si"></div>
+ <div class="sum"><div><span>Total</span><b id="stot">₹0</b></div><div><span>Payment done</span><b id="spay" class="pos">₹0</b></div><div><span>Pending</span><b id="spend">₹0</b></div><button id="sb">Save Sale</button></div></div>
+<div class="p"><h2>🚚 Add Stock from Subseller</h2>
+ <div class="g4" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));align-items:end"><div><label>Date</label><input type="date" id="kd"></div><div><label>Bag type</label><select id="kt"></select></div>
+ <div><label>Number of bags</label><input id="kb" type="number" min="1"></div><div><label>Total money paid (₹)</label><input id="kc" type="number" min="0"></div>
+ <div><label>Subseller name (optional)</label><input id="ks"></div><button class="b" id="kbtn" style="padding:11px">Save Stock Entry</button></div></div>
+<div class="p"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><h2>👨‍🌾 Farmers</h2><input id="q" placeholder="Search farmer…" style="max-width:260px"></div>
+<div class="t"><table><thead><tr><th>Farmer</th><th>Mobile</th><th class="r">Purchases</th><th class="r">Total bags</th><th class="r">Total money</th><th class="r">Pending</th><th>Last</th><th></th></tr></thead><tbody id="ft"></tbody></table></div></div>
+<div class="two"><div class="p"><h2>Recent Sales</h2><div class="t"><table><tbody id="rs"></tbody></table></div></div>
+<div class="p"><h2>Recent Stock Entries</h2><div class="t"><table><tbody id="rk"></tbody></table></div></div></div>
+<div class="p"><h2>🛡️ Data Safety</h2><p id="meta" style="margin:0 0 10px;font-size:14px"></p>
+<button id="dl">⬇ Download backup</button> <button class="s" id="csv">Export sales (Excel/CSV)</button> <button class="s" onclick="rf.click()">Restore from backup file</button><input type="file" id="rf" accept=".json" hidden></div>
+</main>
+<footer>Made with ❤️ by <b>Chaitanya Ghule</b> · Vivekananda Pashukhadya Kendra</footer>
+<div id="md"><div id="mc"></div></div>
+<script>
+const SHOP='Vivekananda Pashukhadya Kendra',TY=['Goli Pend','Sarki','Bhusa','Other'],$=i=>document.getElementById(i);
+const inr=n=>'₹'+(+n||0).toLocaleString('en-IN',{maximumFractionDigits:2}),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const today=()=>{const d=new Date();return new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)};
+let S;
+async function api(m,u,b){const r=await fetch(u,{method:m,headers:{'x-requested-with':'vpk','Content-Type':'application/json'},body:b?JSON.stringify(b):undefined});
+ const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||'Server error');return j}
+function msg(t,bad){const a=$('al');a.className=bad?'er':'go';a.textContent=t;a.style.display='block';scrollTo(0,0);setTimeout(()=>a.style.display='none',6000)}
+async function load(){try{S=await api('GET','/api/state')}catch(e){msg('Cannot reach the app server. Is start.bat still running?',1);return}render()}
+function stats(){const t={};TY.forEach(k=>t[k]={pb:0,pc:0,sb:0,sr:0,cg:0,rb:0,rc:0});
+ // go through history in order; each sale is costed at the average price of stock held ON THAT DAY
+ const ev=[...S.stock.map(x=>({k:0,x})),...S.sales.map(x=>({k:1,x}))].sort((a,b)=>a.x.date.localeCompare(b.x.date)||a.x.at.localeCompare(b.x.at));
+ ev.forEach(({k,x})=>{if(k===0){const o=t[x.type];o.pb+=x.bags;o.pc+=x.cost;o.rb+=x.bags;o.rc+=x.cost}
+  else x.items.forEach(i=>{const o=t[i.type],c=o.rb>0?o.rc/o.rb*i.bags:0;o.sb+=i.bags;o.sr+=i.amount;o.cg+=c;o.rb-=i.bags;o.rc-=c})});
+ TY.forEach(k=>{const x=t[k];x.st=x.pb-x.sb;x.avg=x.rb>0?x.rc/x.rb:(x.pb?x.pc/x.pb:0);x.val=x.rb>0?Math.round(x.rc*100)/100:0;x.pr=Math.round((x.sr-x.cg)*100)/100});return t}
+const pd=i=>i.paid==null?i.amount:i.paid,J=o=>JSON.stringify(o).replace(/'/g,'&#39;');
+const fPend=id=>S.sales.filter(x=>x.farmerId===id).reduce((a,x)=>a+x.items.reduce((c,i)=>c+i.amount-pd(i),0),0)-S.payments.filter(p=>p.farmerId===id).reduce((a,p)=>a+p.amount,0);
+const fOf=id=>S.farmers.find(f=>f.id===id)||{name:'?'};
+const sum=i=>i.map(x=>`${x.type} ${x.bags}`).join(', ');
+function render(){const t=stats(),A=k=>TY.reduce((a,y)=>a+t[y][k],0);
+ $('hs').textContent=A('st');
+ const PEND=S.farmers.reduce((a,f)=>a+fPend(f.id),0);
+ $('cards').innerHTML=[['Current Stock',A('st')+' bags','Stock value '+inr(A('val'))],['Total Sales',inr(A('sr')),A('sb')+' bags sold'],['Profit till now',`<span class="${A('pr')<0?'neg':'pos'}">${inr(A('pr'))}</span>`,'Sales − cost of sold bags'],['Money spent on stock',inr(A('pc')),A('pb')+' bags bought'],['Pending from farmers',`<span class="${PEND>0?'neg':'pos'}">${inr(PEND)}</span>`,'Still to collect'],['Farmers',S.farmers.length,'Registered customers']].map(c=>`<div class="c"><small>${c[0]}</small><h3>${c[1]}</h3><em class="mu">${c[2]}</em></div>`).join('');
+ $('tt').innerHTML=TY.map(k=>{const x=t[k];return `<tr><td><b>${k}</b></td><td class="r">${x.pb}</td><td class="r">${x.sb}</td><td class="r"><b>${x.st}</b></td><td class="r">${inr(x.avg)}</td><td class="r">${inr(x.val)}</td><td class="r">${inr(x.sr)}</td><td class="r ${x.pr<0?'neg':'pos'}">${inr(x.pr)}</td></tr>`}).join('');
+ $('si').innerHTML=TY.map((k,i)=>`<div class="row"><div>${k}<small>${t[k].st} in stock</small></div><div><label>Bags</label><input type="number" min="0" data-f="b"></div><div><label>Rate/bag</label><input type="number" min="0" data-f="r"></div><div><label>Total ₹</label><input type="number" min="0" data-f="a"></div><div><label>Payment done ₹</label><input type="number" min="0" data-f="p"></div><div><label>Description</label><input data-f="n" placeholder="e.g. cash / UPI"></div></div>`).join('');
+ tot();$('kt').innerHTML=TY.map(k=>`<option>${k}</option>`).join('');
+ $('fl').innerHTML=S.farmers.map(f=>`<option value="${esc(f.name)}">${esc(f.village||'')}</option>`).join('');
+ farmers();
+ $('rs').innerHTML=S.sales.slice(-8).reverse().map(s=>{const pe=s.items.reduce((c,i)=>c+i.amount-pd(i),0);return `<tr><td>${s.date}</td><td>${esc(fOf(s.farmerId).name)}</td><td class="mu">${sum(s.items)}</td><td class="r"><b>${inr(s.total)}</b>${pe>0?`<br><span class="neg" style="font-size:12px">Pending ${inr(pe)}</span>`:''}</td><td><button class="x" onclick="del('sale','${s.id}')">Delete</button></td></tr>`}).join('')||'<tr><td class="mu">No sales yet</td></tr>';
+ $('rk').innerHTML=S.stock.slice(-8).reverse().map(s=>`<tr><td>${s.date}</td><td>${s.type}</td><td>${s.bags} bags</td><td class="r"><b>${inr(s.cost)}</b></td><td><button class="x" onclick="del('stock','${s.id}')">Delete</button></td></tr>`).join('')||'<tr><td class="mu">No stock entries yet</td></tr>';
+ const m=S.meta;$('meta').innerHTML=`Saved on this laptop in: <b>${esc(m.dataDir)}</b><br>Automatic backups: <b>${m.backups}</b> (a new one after every change) · Last: ${esc(m.lastBackup||'-')}`}
+function farmers(){const q=$('q').value.toLowerCase();
+ $('ft').innerHTML=S.farmers.filter(f=>(f.name+f.village+f.phone).toLowerCase().includes(q)).map(f=>{const s=S.sales.filter(x=>x.farmerId===f.id),pe=fPend(f.id);
+  const b=s.reduce((a,x)=>a+x.items.reduce((c,i)=>c+i.bags,0),0),m=s.reduce((a,x)=>a+x.total,0);
+  return `<tr><td><b>${esc(f.name)}</b><br><span class="mu">${esc(f.village||'')}</span></td><td>${esc(f.phone||'-')}</td><td class="r">${s.length}</td><td class="r">${b}</td><td class="r"><b>${inr(m)}</b></td><td class="r ${pe>0?'neg':'pos'}">${inr(pe)}</td><td>${s.length?s[s.length-1].date:'-'}</td><td><button class="s" onclick="detail('${f.id}')">View details</button></td></tr>`}).join('')||'<tr><td colspan=8 class="mu">No farmers yet</td></tr>'}
+$('q').oninput=farmers;
+// ---- sale form
+$('si').addEventListener('input',e=>{const d=e.target.dataset;if(!d.f)return;if(d.f==='p'||d.f==='n'){tot();return}const r=e.target.closest('.row').querySelectorAll('input'),[b,rt,a]=[...r];
+ if(d.f==='b'||d.f==='r'){if(+b.value&&+rt.value)a.value=+(b.value*rt.value).toFixed(2)}else if(+b.value&&a.value)rt.value=+(a.value/b.value).toFixed(2);tot()});
+const tot=()=>{let n=0,p=0;document.querySelectorAll('#si .row').forEach(r=>{const v=r.querySelectorAll('input');n+=+v[2].value||0;p+=+v[3].value||0});$('stot').textContent=inr(n);$('spay').textContent=inr(p);$('spend').textContent=inr(n-p);$('spend').className=n-p>0?'neg':'pos'};
+$('fn').addEventListener('input',()=>{const f=S.farmers.find(x=>x.name.toLowerCase()===$('fn').value.trim().toLowerCase());if(f){$('fp').value=f.phone||'';$('fv').value=f.village||''}});
+$('sb').onclick=async()=>{const items=[...document.querySelectorAll('#si .row')].map((r,i)=>{const v=r.querySelectorAll('input');return{type:TY[i],bags:+v[0].value,amount:+v[2].value,paid:+v[3].value||0,note:v[4].value.trim()}}).filter(i=>i.bags>0);
+ try{const r=await api('POST','/api/sale',{name:$('fn').value,phone:$('fp').value,village:$('fv').value,date:$('sd').value||today(),items});
+  ['fn','fp','fv'].forEach(i=>$(i).value='');await load();smsBox(r.sale,r.farmer);msg('Sale saved ✔')}catch(e){msg(e.message,1)}};
+$('kbtn').onclick=async()=>{try{await api('POST','/api/stock',{date:$('kd').value||today(),type:$('kt').value,bags:$('kb').value,cost:$('kc').value,supplier:$('ks').value});
+ ['kb','kc','ks'].forEach(i=>$(i).value='');await load();msg('Stock entry saved ✔')}catch(e){msg(e.message,1)}};
+async function del(k,id){if(!confirm('Delete this entry? (It stays inside the backup files.)'))return;try{await api('DELETE',`/api/${k}/${id}`);await load()}catch(e){msg(e.message,1)}}
+// ---- SMS
+function copyMsg(){const t=$('mt');t.select();t.setSelectionRange(0,99999);let ok=false;try{ok=document.execCommand('copy')}catch(e){}msg(ok?'Copied ✔':'Could not copy - press and hold the text to copy',!ok)}
+function sendWA(){const n=phone($('mp').value);if(n.length<12){msg('Enter a valid 10-digit mobile number first',1);return}
+ window.open('https://wa.me/'+n+'?text='+encodeURIComponent($('mt').value),'_blank')}
+const phone=p=>{p=String(p||'').replace(/\D/g,'');return p.length===10?'91'+p:p};
+const dmy=d=>String(d).split('-').reverse().join('-');
+const lineTxt=i=>`Bag Type: ${i.type}\nNo. of Bags: ${i.bags}\nTotal Amount: ${inr(i.amount)}\nPaid${i.note?` (${i.note})`:''}: ${inr(pd(i))}\nPending Amount: ${inr(i.amount-pd(i))}`;
+function saleText(s,f){const pe=s.items.reduce((c,i)=>c+i.amount-pd(i),0);
+ return `*${SHOP}*\nDate: ${dmy(s.date)}\nDear ${f.name},\n`+s.items.map(lineTxt).join('\n\n')+(s.items.length>1?`\n\nGrand Total: ${inr(s.total)}\nTotal Paid: ${inr(s.total-pe)}\nTotal Pending: ${inr(pe)}`:'')+`\nThank you!`}
+function stmtText(f){const s=S.sales.filter(x=>x.farmerId===f.id),t={};s.forEach(x=>x.items.forEach(i=>{t[i.type]=t[i.type]||{b:0,a:0};t[i.type].b+=i.bags;t[i.type].a+=i.amount}));
+ const tm=s.reduce((a,x)=>a+x.total,0),pe=fPend(f.id);
+ return `*${SHOP}*\nDate: ${dmy(today())}\nDear ${f.name},\nYour total purchase till now:\n`+Object.entries(t).map(([k,v])=>`Bag Type: ${k}\nNo. of Bags: ${v.b}\nTotal Amount: ${inr(v.a)}`).join('\n\n')+`\n\nGrand Total: ${inr(tm)}\nTotal Paid: ${inr(tm-pe)}\nPending Amount: ${inr(pe)}\nThank you!`}
+function smsBox(s,f){$('mc').innerHTML=`<h2>📱 Message for ${esc(f.name)}</h2><label>Mobile</label><input id="mp" value="${esc(f.phone||'')}"><label>Message (you can edit)</label><textarea id="mt" rows="9">${esc(typeof s==='string'?s:saleText(s,f))}</textarea>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button onclick="window.location.href='sms:+'+phone($('mp').value)+'?body='+encodeURIComponent($('mt').value.replace(/\*/g,''))">Send SMS</button><button class="wa" onclick="sendWA()">WhatsApp</button><button class="b" onclick="copyMsg()">Copy</button><button class="s" onclick="md.style.display='none'">Close</button></div>
+<p class="mu" style="font-size:12px">"Send SMS" opens your phone/Messages app with the text ready. On a laptop use WhatsApp or Copy.</p>`;$('md').style.display='flex'}
+function detail(id){const f=S.farmers.find(x=>x.id===id),s=S.sales.filter(x=>x.farmerId===id),py=S.payments.filter(x=>x.farmerId===id),t={};TY.forEach(k=>t[k]=0);s.forEach(x=>x.items.forEach(i=>t[i.type]+=i.bags));
+ const tm=s.reduce((a,x)=>a+x.total,0),pe=fPend(id);
+ $('mc').innerHTML=`<h2>${esc(f.name)} <span class="mu" style="font-size:14px">${esc(f.village||'')} ${esc(f.phone||'')}</span></h2>
+<div class="cards" style="margin-bottom:12px"><div class="c"><small>Total bags</small><h3>${Object.values(t).reduce((a,b)=>a+b,0)}</h3></div><div class="c"><small>Total money</small><h3>${inr(tm)}</h3></div><div class="c"><small>Payment done</small><h3>${inr(tm-pe)}</h3></div><div class="c"><small>Pending</small><h3 class="${pe>0?'neg':'pos'}">${inr(pe)}</h3></div></div>
+<p>${TY.map(k=>`<b>${k}:</b> ${t[k]} bags`).join(' &nbsp;·&nbsp; ')}</p>
+<div class="t"><table><thead><tr><th>Date</th><th>Bags</th><th class="r">Amount</th><th class="r">Paid</th><th>Description</th><th></th></tr></thead><tbody>${s.slice().reverse().map(x=>`<tr><td>${x.date}</td><td>${sum(x.items)}</td><td class="r">${inr(x.total)}</td><td class="r">${inr(x.items.reduce((c,i)=>c+pd(i),0))}</td><td class="mu">${esc(x.items.map(i=>i.note).filter(Boolean).join('; '))}</td><td><button class="s" onclick='smsBox(${J(saleText(x,f))},${J(f)})'>Message</button></td></tr>`).join('')}</tbody></table></div>
+<h2 style="margin-top:16px">💰 Payments received later</h2>
+<div class="t"><table><tbody>${py.map(x=>`<tr><td>${x.date}</td><td><b>${inr(x.amount)}</b></td><td class="mu">${esc(x.note)}</td><td><button class="x" onclick="delPay('${x.id}','${id}')">Delete</button></td></tr>`).join('')||'<tr><td class="mu">None yet</td></tr>'}</tbody></table></div>
+<div class="r2"><div><label>Amount received ₹</label><input id="pa" type="number" min="1"></div><div><label>Description</label><input id="pn" placeholder="cash / UPI"></div></div>
+<button class="w" onclick="addPay('${id}')">Save payment received</button>
+<div style="display:flex;gap:8px;margin-top:14px"><button class="b" onclick='smsBox(${J(stmtText(f))},${J(f)})'>Send total statement</button><button class="s" onclick="md.style.display='none'">Close</button></div>`;$('md').style.display='flex'}
+async function addPay(id){try{await api('POST','/api/payment',{farmerId:id,date:today(),amount:$('pa').value,note:$('pn').value});await load();detail(id);msg('Payment saved ✔')}catch(e){msg(e.message,1)}}
+async function delPay(pid,id){if(!confirm('Delete this payment entry?'))return;try{await api('DELETE','/api/payment/'+pid);await load();detail(id)}catch(e){msg(e.message,1)}}
+// ---- backup
+$('dl').onclick=()=>location.href='/api/backup';
+$('csv').onclick=()=>{const rows=[['Date','Farmer','Village','Mobile',...TY.map(k=>k+' bags'),'Total Rs','Paid Rs','Pending Rs','Description']];S.sales.forEach(s=>{const f=fOf(s.farmerId);rows.push([s.date,f.name,f.village||'',f.phone||'',...TY.map(k=>s.items.filter(i=>i.type===k).reduce((a,i)=>a+i.bags,0)),s.total,s.items.reduce((a,i)=>a+pd(i),0),s.items.reduce((a,i)=>a+i.amount-pd(i),0),s.items.map(i=>i.note).filter(Boolean).join('; ')])});
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n')],{type:'text/csv'}));a.download='VPK-sales.csv';a.click()};
+$('rf').onchange=async e=>{const f=e.target.files[0];if(!f||!confirm('Replace ALL current data with this backup? (Current data is backed up first.)'))return;
+ try{await api('POST','/api/restore',JSON.parse(await f.text()));await load();msg('Backup restored ✔')}catch(x){msg(x.message,1)}e.target.value=''};
+$('md').onclick=e=>{if(e.target.id==='md')$('md').style.display='none'};
+$('sd').value=$('kd').value=today();load();
+</script></body></html>
